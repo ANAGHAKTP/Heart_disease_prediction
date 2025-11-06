@@ -1,36 +1,86 @@
-#Heart Disease Prediction Analysis
-This notebook analyzes the "Heart Disease UCI" dataset to predict heart disease using various machine learning models.
+# Heart Disease Prediction Analysis
 
-Dataset
-The dataset is loaded from the /content/ucg kaggle.zip file and contains information about patients, including age, sex, chest pain type, and other medical indicators. The target variable is num, which indicates the severity of heart disease (0-4).
+This project analyzes the Heart Disease UCI dataset to predict the presence of heart disease using different machine learning models. The goal is to clean the data, train models, evaluate them, and compare their performance.
 
-Analysis Steps
-Data Loading and Initial Exploration: The dataset is loaded into a pandas DataFrame, and initial exploration is performed to understand the data structure, check for missing values, and get descriptive statistics.
+---
 
-Handle Missing Values: Missing values in numerical columns (trestbps, chol, thalch, oldpeak, ca) are imputed with the mean, and missing values in categorical columns (fbs, restecg, exang, slope, thal) are imputed with the mode.
+## Dataset
 
-Encode Categorical Features: Categorical features are one-hot encoded to convert them into a numerical format suitable for machine learning models.
+- Dataset Used: Heart Disease UCI
+- Loaded from: `/content/ucg kaggle.zip`
+- Contains patient medical information such as:
+  - Age, Sex, Chest Pain Type
+  - Resting Blood Pressure, Cholesterol
+  - ECG Results, Maximum Heart Rate, Exercise Induced Angina, etc.
 
-Scale Numerical Features: Numerical features are scaled using StandardScaler to ensure they have a similar range.
+Target Variable:  
+`num` – indicates heart disease severity (0 to 4)
 
-Split the Data: The dataset is split into training (80%) and testing (20%) sets.
+---
 
-Train Models: Logistic Regression, Random Forest, and XGBoost models are trained on the training data.
+## Steps in the Analysis
 
-Evaluate Models: The trained models are evaluated on the testing data using metrics such as Accuracy, Precision, Recall, F1-score, and ROC AUC.
+### 1. Data Loading and Exploration
+- Imported the dataset into a pandas DataFrame
+- Explored data structure, checked missing values, and reviewed summary statistics
 
-Compare Models: The performance of the models is compared to identify the best performing one.
+### 2. Handling Missing Values
+- Numerical columns (`trestbps`, `chol`, `thalch`, `oldpeak`, `ca`) were filled with the mean
+- Categorical columns (`fbs`, `restecg`, `exang`, `slope`, `thal`) were filled with the mode
 
-Findings
-Based on the evaluation metrics on the test set:
+### 3. Encoding Categorical Features
+- One-Hot Encoding was applied to convert categorical features into numerical format
 
-Random Forest achieved the highest Accuracy (0.6576), Precision (0.6222), Recall (0.6576), F1-score (0.6318), and ROC AUC (0.8722).
-XGBoost showed comparable performance to Random Forest, with slightly lower metrics.
-Logistic Regression performed significantly lower across all metrics compared to Random Forest and XGBoost.
-Conclusion
-The Random Forest model appears to be the most suitable model among the evaluated options for this heart disease prediction task based on the test set performance.
+### 4. Feature Scaling
+- StandardScaler was used to normalize numerical features
 
-Next Steps
-Further hyperparameter tuning for Random Forest and XGBoost models could potentially improve their performance.
-Explore other machine learning algorithms and techniques.
-Perform more in-depth feature engineering.
+### 5. Splitting the Data
+- Dataset was split into:
+  - 80% for training
+  - 20% for testing
+
+### 6. Model Training
+The following machine learning models were trained:
+
+- Logistic Regression
+- Random Forest Classifier
+- XGBoost Classifier
+
+### 7. Model Evaluation
+Models were evaluated using the following metrics:
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC AUC
+
+---
+
+## Results
+
+| Model | Accuracy | Precision | Recall | F1-Score | ROC AUC |
+|--------|----------|------------|--------|-----------|----------|
+| Random Forest | 0.6576 | 0.6222 | 0.6576 | 0.6318 | 0.8722 |
+| XGBoost | Slightly lower than Random Forest | - | - | - | - |
+| Logistic Regression | Performed lowest across all metrics | - | - | - | - |
+
+Key Observations:
+- Random Forest gave the best overall performance.
+- XGBoost performed close to Random Forest.
+- Logistic Regression performed the poorest.
+
+---
+
+## Conclusion
+
+Based on the evaluation, the Random Forest model is the most suitable for predicting heart disease for this dataset.
+
+---
+
+## Future Improvements
+
+- Perform hyperparameter tuning for Random Forest and XGBoost
+- Explore additional models such as SVM, CatBoost, or Neural Networks
+- Apply feature engineering and feature selection techniques
+- Use cross-validation for more accurate performance evaluation
